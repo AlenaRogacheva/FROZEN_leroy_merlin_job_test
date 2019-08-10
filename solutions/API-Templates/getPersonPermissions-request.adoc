@@ -1,0 +1,70 @@
+|===
+|*Параметр*             |*Формат*                     |*Описание*
+
+|1: userData
+a|1: struct UserData
+[source, json, options="nowrap"]
+----
+1.2: userID string
+----
+|1: Данные о пользователе +
+1.2: ID пользователя
+
+
+|2: filter
+a| 2: struct SourseFilter
+[source, json, options="nowrap"]
+----
+list <sourseID> id
+----
+
+|2: Фильтр объектов +
+2.1: ID объектов
+
+|===
+
+++++
+<details>
+<summary><b>Пример запроса (один объект)</b></summary>
+++++
+[source, json, options="nowrap"]
+----
+{
+   "userData":{
+      "id":123456
+   },
+   "filter":{
+      "sourse":[
+         12
+      ]
+   }
+}
+----
+++++
+</details>
+++++
+
+
+++++
+<details>
+<summary><b>Пример запроса (два объекта)</b></summary>
+++++
+[source, json, options="nowrap"]
+----
+{
+   "userData":{
+      "id":123456
+   },
+   "filter":{
+      "sourse":[
+         12,
+         13
+      ]
+   }
+}
+----
+++++
+</details>
+++++
+
+

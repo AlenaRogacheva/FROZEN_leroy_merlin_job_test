@@ -1,0 +1,1 @@
+<<solutions/API-Templates/getPersonPermissions.adoc, getPersonPermissions>> -   сервис возврата прав пользователя с фильтром по объектам
