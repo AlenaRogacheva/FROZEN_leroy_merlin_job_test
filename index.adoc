@@ -4,6 +4,6 @@
 === ипользованные источники,  технологии и прочее
 
 . разметка asciidoc
-. https://diagrams.visual-paradigm.com - онлайн рисование диаграмм
-
+. https://diagrams.visual-paradigm.com - онлайн ресурс для рисование диаграмм
+. https://jsonformatter.curiousconcept.com/ - онлайн ресурс для форматирования и валидации JSON формата
 
