@@ -1,11 +1,8 @@
+=== ипользованные источники, и сторонние сервисы
 
-
-
-=== ипользованные источники,  технологии и прочее
-
-. разметка asciidoc
-. https://diagrams.visual-paradigm.com - онлайн ресурс для рисование диаграмм
-. https://jsonformatter.curiousconcept.com/ - онлайн ресурс для форматирования и валидации JSON формата
+. разметка https://asciidoctor.org/[asciidoc]
+. https://diagrams.visual-paradigm.com[iagrams.visual-paradigm] - онлайн ресурс для рисование диаграмм
+. https://jsonformatter.curiousconcept.com/[jsonformatter.curiousconcept] - онлайн ресурс для форматирования и валидации JSON формата
 
 === TODO лист
 * приложение должно работать с ресурсами или изменять права пользователям? и как это бъется с авторизацией через social login
