@@ -1,40 +1,28 @@
-
-Все происходящие ошибки формируют единообразное исключение
-
-
+Все происходящие ошибки формируют единообразное исключение.
 
 |===
-|*Параметр*             |*Формат*                     |*Описание*
-
-|1: permission
-a|1: struct soursePermission
-[source, json, options="nowrap"]
-----
-1.2: sourseID int,
-1.2: sousre name
-1.3 <list> strust userPermission
-----
-|1: Данные о пользователе +
-1.2: ID пользователя
+2+|*Параметр*             |*Формат*                     |*Описание*
+.3+|  struct Error
 
 
-|2: filter
-a| 2: struct SourseFilter
-[source, json, options="nowrap"]
-----
-list <sourseID> id
-----
 
-|2: Фильтр объектов +
-2.1: ID объектов
+|type
+|varchar(255)
+a|
+* TechEror  - исключение вызванное неверной работы программы или оборудования
+* BissnessError - ошибка бизнес процесса
 
+|code
+|int
+| Определен для BissnessError в файле настроек (каком именно?)
+|title
+| strint(255)
+|Текст ошибки
 |===
-
-
 
 ++++
 <details>
-<summary><b>Пример ответа</b></summary>
+<summary><b>Пример возврата ошибки ответа</b></summary>
 ++++
 [source, json, options="nowrap"]
 ----
@@ -42,12 +30,13 @@ list <sourseID> id
 ----
 [
    {
-      "type":"TechEror",
+      "type":"TechError",
       "code":1101,
       "title":"Не удалось подключиться к БД DataBaseName"
+
    },
    {
-      "type":"BissnessExeption",
+      "type":"BissnessError",
       "code":2201,
       "title":"Пользователь {name} не добавлен ни в одну группу"
    }
