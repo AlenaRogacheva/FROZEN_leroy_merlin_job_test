@@ -1,1 +1,9 @@
+:sectnums:
+:sectnumlevels: 6
+:toc: left
+:toclevels: 2
+:toc-title: Оглавление
+
+=== Сервисы системы
+
 <<solutions/API-Templates/getPersonPermissions.adoc, getPersonPermissions>> -   сервис возврата прав пользователя с фильтром по объектам
