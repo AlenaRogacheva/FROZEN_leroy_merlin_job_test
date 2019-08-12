@@ -5,17 +5,19 @@
 a|1: struct UserData
 [source, json, options="nowrap"]
 ----
-1.2: userID string
+1.1: userID string
+1.2  session
 ----
 |1: Данные о пользователе +
-1.2: ID пользователя
+1.1: ID пользователя +
+1.2: сессия
 
 
 |2: filter
 a| 2: struct SourseFilter
 [source, json, options="nowrap"]
 ----
-list <sourseID> id
+2.1: list <sourseID> id
 ----
 
 |2: Фильтр объектов +
