@@ -80,7 +80,7 @@ list <string>
 ----
 [
    {
-      "type":"BissnessExeption",
+      "type":"BissnessException",
       "code":2201,
       "title":"Пользователь {name} не добавлен ни в одну группу"
    }
