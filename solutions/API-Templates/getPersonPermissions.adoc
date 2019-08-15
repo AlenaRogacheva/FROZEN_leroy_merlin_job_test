@@ -10,11 +10,11 @@
 
 === Входные параметры
 
-include::./API-Templates/getPersonPermissions-request.adoc[]
+include::./getPersonPermissions-request.adoc[]
 
 === Выходные параметры
 
-include::./API-Templates/getPersonPermissions-response.adoc[]
+include::./getPersonPermissions-response.adoc[]
 
 == Алгоритм работы
 
@@ -50,4 +50,4 @@ TODO: доделать возвращение имени оюъекта - object
 
 === Обработка ошибок
 
-Формирование ошибок происходит в соответствии с <<exeptions.adoc,общим правилом>>.
+Формирование ошибок происходит в соответствии с <<exceptions.adoc,общим правилом>>.
