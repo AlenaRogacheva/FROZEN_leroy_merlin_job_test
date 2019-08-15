@@ -10,11 +10,11 @@
 
 === Входные параметры
 
-include::./API-Templates/getPersonPermissions-request.adoc[]
+include::./getPersonPermissions-request.adoc[]
 
 === Выходные параметры
 
-include::./API-Templates/getPersonPermissions-response.adoc[]
+include::./getPersonPermissions-response.adoc[]
 
 == Алгоритм работы
 
