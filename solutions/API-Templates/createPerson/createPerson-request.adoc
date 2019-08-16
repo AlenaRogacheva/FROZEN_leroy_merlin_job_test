@@ -1,0 +1,39 @@
+|===
+|*Параметр*             |*Формат*                     |*Описание*
+
+|1: userData
+a|1: struct UserData
+[source, json, options="nowrap"]
+----
+1.1: userID int
+1.2  session varchar(255)
+----
+|1: Данные о пользователе +
+1.1: ID пользователя +
+1.2: Cессия
+
+|2: userName
+a| 2: varchar(255)
+|2: Имя создаваемого пользователя
+
+|===
+
+
+++++
+<details>
+<summary><b>Пример запроса</b></summary>
+++++
+[source, json, options="nowrap"]
+----
+{
+   "userData":{
+      "id":123456
+      "session": "asdfg-12345-ghjkl-12345"
+   },
+   "userName": "Иванов Иван Иванович"
+   }
+}
+----
+++++
+</details>
+++++

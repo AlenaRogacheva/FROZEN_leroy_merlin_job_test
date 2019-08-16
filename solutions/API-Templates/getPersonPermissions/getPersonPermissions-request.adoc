@@ -14,20 +14,20 @@ a|1: struct UserData
 
 
 |2: filter
-a| 2: struct SourseFilter
+a| 2: struct SourseTypeFilter
 [source, json, options="nowrap"]
 ----
 2.1: list <int>
 ----
 
-|2: Фильтр объектов +
-2.1: ID объектов
+|2: Фильтр типов объектов +
+2.1: ID типов объектов
 
 |===
 
 ++++
 <details>
-<summary><b>Пример запроса (один объект)</b></summary>
+<summary><b>Пример запроса (один тип объекта)</b></summary>
 ++++
 [source, json, options="nowrap"]
 ----
@@ -46,10 +46,9 @@ a| 2: struct SourseFilter
 </details>
 ++++
 
-
 ++++
 <details>
-<summary><b>Пример запроса (два объекта)</b></summary>
+<summary><b>Пример запроса (два типа объектов)</b></summary>
 ++++
 [source, json, options="nowrap"]
 ----
