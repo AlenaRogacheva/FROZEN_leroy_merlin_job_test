@@ -1,9 +1,9 @@
 |===
 |*Параметр*             |*Формат*                     |*Описание*
 
-|1: objectID
+|1: objectTypeID
 |int
-|1: Идентификатор объекта
+|1: Идентификатор типа объекта
 
 |2: objectName
 |string
@@ -21,7 +21,6 @@ list <string>
 |3: Список доступных действий
 
 |===
-
 
 ++++
 <details>
@@ -46,7 +45,7 @@ list <string>
 
 ++++
 <details>
-<summary><b>Пример ответа (два объекта)</b></summary>
+<summary><b>Пример ответа (два типа объектов)</b></summary>
 ++++
 [source, json, options="nowrap"]
 ----
