@@ -27,15 +27,15 @@ include::./createPerson/createPerson-request.adoc[]
 1.2: userData.session
 
 a|
-1.1: +
-1.2:
+1.1: NotBlank +
+1.2: NotBlank +
 
 |1: Данные о пользователе +
 1.1: ID пользователя +
 1.2: Cессия
 
 |2: userName
-a| 2:
+a| 2: NotBlank
 |2: Имя создаваемого пользователя
 
 |===

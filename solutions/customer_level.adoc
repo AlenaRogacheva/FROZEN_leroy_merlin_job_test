@@ -6,4 +6,6 @@
 
 === Выставленный API
 
-<<solutions/API-Templates/getPersonPermissions.adoc, getPersonPermissions>> -   сервис возврата прав пользователя с фильтром по объектам
+<<solutions/API-Templates/getPersonPermissions.adoc, getPersonPermissions>> -   метод возврата прав пользователя с фильтром по объектам +
+<<solutions/API-Templates/createPerson.adoc,createPerson.adoc>> -  метод добавления пользователя в систему +
+<<solutions/API-Templates/removePersonServise.adoc, removePersonServise.adoc>> - метод удаления пользователя из системы
