@@ -46,3 +46,5 @@ include::data_level.adoc[]
 include::logic_level.adoc[]
 
 include::customer_level.adoc[]
+
+<</API-Templates/swaggerv5.yaml, описание методов API>>, открывать в http://editor.swagger.io/
