@@ -1,0 +1,759 @@
+swagger: "2.0"
+info:
+  description: "Это документация к тестовому заданию в Леруа Мерлен. API системы управления контролем доступа на основе ролей."
+  version: "1.0.0"
+  title: "Swagger"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "rogacheva.a.y@gmail.ru"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "myserver"
+basePath: "/v1"
+tags:
+- name: "Person"
+  description: "Серсис работы с пользователями системы, позволяет создавать иу далять пользователей, изменять их данные"
+- name: "Group"
+  description: "Серсис работы с группами пользователей, позволяет создавать и удалять группы, изменять состав участников группы, а также добавлять иззменять права группы"
+- name: "Source"
+  description: "Серсис работы с ресурсами, позволяет создавать и удалять ресурсы, изменять доступных действий над ресурсом"
+schemes:
+- "https"
+- "http"
+paths:
+  /person:
+    post:
+      tags:
+      - "Person"
+      summary: "Добавление нового пользователя в систему"
+      description: "Добавление нового пользователя в систему"
+      operationId: "addPerson"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Информация для идентификации пользователя и данные, которые надо добавить"
+        required: true
+        schema:
+          $ref: "#/definitions/PersonRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PersonResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /person/{personName}:
+    get:
+      tags:
+      - "Person"
+      summary: "Получение данных пользователя по имени"
+      description: "Возращает данные о пользователе"
+      operationId: "getPersonByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personName"
+        in: "path"
+        description: "Имя пользователя"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация для идентификации пользователя"
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PersonResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Person not found"
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - "Person"
+      summary: "Удаление пользователя"
+      description: "Удаление пользователя"
+      operationId: "deletePersonByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personName"
+        in: "path"
+        description: "Имя пользователя"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Person not found"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+    patch:
+      tags:
+      - "Person"
+      summary: "Обновление данных пользователя"
+      description: "Обновление данных пользователя"
+      operationId: "updatePersonByName"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personName"
+        in: "path"
+        description: "Имя пользователя"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о пользователе и данные, которые надо обновить"
+        required: true
+        schema:
+          $ref: "#/definitions/PersonRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PersonResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "Invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /group:
+    post:
+      tags:
+      - "Group"
+      summary: "Добавление новой группы"
+      description: "Добавление новой группы"
+      operationId: "addGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Информация о группе и данные, которые надо добавить"
+        required: true
+        schema:
+          $ref: "#/definitions/GroupRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/GroupResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /group/{groupName}:
+    get:
+      tags:
+      - "Group"
+      summary: "Получение данных группы по названию"
+      description: "Получение данных группы по названию"
+      operationId: "getGroupByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupName"
+        in: "path"
+        description: "Название группы"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/GroupResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Group not found"
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - "Group"
+      summary: "Удаление группы по названию"
+      description: "Удаление группы группы по названию"
+      operationId: "deleteGroupByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupName"
+        in: "path"
+        description: "Название группы"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        200:
+          description: "successful operation"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Group not found"
+      security:
+      - api_key: []
+  /group/addpermission/{groupName}:
+    patch:
+      tags:
+      - "Group"
+      summary: "Метод добавляет прав в группу"
+      description: "Метод добавляет прав в группу"
+      operationId: "addPermissionToGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupName"
+        in: "path"
+        description: "Название группы"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о группе и правах, которые надо добавить группе"
+        required: true
+        schema:
+          $ref: "#/definitions/PermissionRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PermissionResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /group/deletepermission/{groupName}:
+    patch:
+      tags:
+      - "Group"
+      summary: "Метод удаляет права из группы"
+      description: "Метод удаляет права из группы"
+      operationId: "deletePermissionFromGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupName"
+        in: "path"
+        description: "Название группы"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о группе и права, которые надо удалить"
+        required: true
+        schema:
+          $ref: "#/definitions/PermissionRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/PermissionResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /Source:
+    post:
+      tags:
+      - "Source"
+      summary: "Создание нового ресурса в системе"
+      description: "Создание нового ресурса в системе"
+      operationId: "addSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Информация о новом ресурсе"
+        required: true
+        schema:
+          $ref: "#/definitions/SourceRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SourceResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /Source/{SourceName}:
+    get:
+      tags:
+      - "Source"
+      summary: "Получение информации о ресурсе по названию"
+      description: "Получение информации о ресурсе по названию"
+      operationId: "getSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "SourceName"
+        in: "path"
+        description: "Имя ресурса"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о ресурсе"
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SourceResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"  
+    delete:
+      tags:
+      - "Source"
+      summary: "Удаление ресурса по названию"
+      description: "Удаление ресурса по названию"
+      operationId: "deleteSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "SourceName"
+        in: "path"
+        description: "Название ресурса"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UserData"
+      responses:
+        200:
+          description: "successful operation"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /Source/SourceActivities/addActivity/{SourceName}:
+    patch:
+      tags:
+      - "Source"
+      summary: "Добавление активности для ресурса"
+      description: "Добавление активности для ресурса"
+      operationId: "addSourceActivities"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "SourceName"
+        in: "path"
+        description: ""
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о группе и данные, которые надо добавить"
+        required: true
+        schema:
+          $ref: "#/definitions/SourceActivitiesRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SourceResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /Source/SourceActivities/deleteActivity/{SourceName}:
+    patch:
+      tags:
+      - "Source"
+      summary: "Удаление активности из ресурса"
+      description: "Удаление активности из ресурса"
+      operationId: "deleteSourceActivities"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "SourceName"
+        in: "path"
+        description: "Имя ресурса"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Информация о ресурсе и активности, которые надо удалить"
+        required: true
+        schema:
+          $ref: "#/definitions/SourceRequest"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SourceResponse"
+        201:
+          description: "ansuccessful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        405:
+          description: "invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  UserData:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      session:
+        type: "string"
+    xml:
+      name: "UserData"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+        example: 1000
+      type:
+        type: "string"
+        example: "BissnessError"
+      message:
+        type: "string"
+        example: "Can't create user IvanovVV"
+    xml:
+      name: "ApiResponse"
+  Person:
+    type: "object"
+    properties:
+      login:
+        type: "string"
+        example: "IvanovVV"
+    xml:
+      name: "Person"
+  PersonMetaData:
+    type: "object"
+    properties:
+      surname:
+        type: "string"
+        example: "Ivanov"
+      name:
+        type: "string"
+        example: "Ivan"
+      department:
+        type: "string"
+        example: "departmentName"
+      position:
+        type: "string"
+        example: "positionName"
+    xml:
+      name: "PersonMetaData"
+  PersonRequest:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      personBase:
+        $ref: "#/definitions/Person"
+      personData:
+        $ref: "#/definitions/PersonMetaData"
+    xml:
+      name: "PersonRequest"
+  PersonResponse:
+    type: "object"
+    properties:
+      personBase:
+        $ref: "#/definitions/Person"
+      personData:
+        $ref: "#/definitions/PersonMetaData"
+      groups:
+        type: array
+        items: 
+          $ref: "#/definitions/GroupShortData"
+    xml:
+      name: "PersonRequest"
+  GroupShortData:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "ManagersDepartmentA"
+    xml:
+      name: "GroupShortData"
+  Group:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "ManagersDepartmentA"
+      persons:
+        type: array
+        items:
+          $ref: "#/definitions/Person"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "Group"
+  GroupRequest:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      group:
+        $ref: "#/definitions/Group"
+      persons:
+        $ref: "#/definitions/Person"
+    xml:
+      name: "GroupRequest"
+  GroupResponse:
+    type: "object"
+    properties:
+      group:
+        $ref: "#/definitions/Group"
+      persons:
+        $ref: "#/definitions/Person"
+    xml:
+      name: "GroupResponse"
+  Permission:
+    type: "object"
+    properties:
+      object:
+        type: "string"
+        example: "ObjectName"
+      activities:
+        type: array
+        items: 
+          type: "string"
+          example: "create"
+    xml:
+      name: "Permission"
+  PermissionRequest:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      group:
+        $ref: "#/definitions/GroupShortData"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "PermissionRequest"
+  PermissionResponse:
+    type: "object"
+    properties:
+      group:
+        $ref: "#/definitions/GroupShortData"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "PermissionResponse"
+  Source:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "DocumentTypeA"
+    xml:
+      name: "Source"
+  SourceRequest:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      source:
+        $ref: "#/definitions/Source"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "SourceRequest"
+  SourceResponse:
+    type: "object"
+    properties:
+      source:
+        $ref: "#/definitions/Source"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "SourceResponse"
+  SourceActivitiesRequest:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      source:
+        $ref: "#/definitions/Source"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "SourceActivitiesRequest"
+  SourceActivitiesResponse:
+    type: "object"
+    properties:
+      userdata:
+        $ref: "#/definitions/UserData"
+      source:
+        $ref: "#/definitions/Source"
+      permissions:
+        type: array
+        items:
+          $ref: "#/definitions/Permission"
+    xml:
+      name: "SourceActivitiesResponse"
