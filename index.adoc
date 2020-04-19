@@ -7,3 +7,8 @@
 . разметка https://asciidoctor.org/[asciidoc]
 . https://diagrams.visual-paradigm.com[diagrams.visual-paradigm] - онлайн ресурс для рисования диаграмм
 . https://jsonformatter.curiousconcept.com/[jsonformatter.curiousconcept] - онлайн ресурс для форматирования и валидации JSON формата
+
+
+===  Окончание изменений данной работы
+19 апреля 2020 вношу крайние изменения в этот репозиторий.
+Репозиторий оставляю как пример использования aciidoc разметки, на данный момент не отображающий моих знаний.
