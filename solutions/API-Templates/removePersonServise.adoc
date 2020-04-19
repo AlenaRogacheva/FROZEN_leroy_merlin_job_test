@@ -11,7 +11,7 @@
 === Входные параметры
 
 include::./removePerson/removePerson-request.adoc[]
-
+
 === Выходные параметры
 
 include::./removePerson/removePerson-response.adoc[]
